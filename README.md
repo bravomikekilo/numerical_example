@@ -7,6 +7,9 @@ example for BUAA BME numerical class
 - package requirement:
     - numpy
 
+# LICENSE
+GPLv3
+
 # 数值分析_示例
 BUAA BME 数值分析课的示例
 
@@ -16,3 +19,5 @@ BUAA BME 数值分析课的示例
 - 拓展包要求
     - numpy 
 
+# 发行许可证
+GNU通用公共授权 第3版
