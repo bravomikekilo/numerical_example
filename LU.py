@@ -2,6 +2,22 @@ import numpy as np
 from gauss_eli import back_iter
 
 def doolittle(X, inplace=True):
+    """
+       杜利特分解 doolittle decomposition
+       ==================================
+       params:
+            X: 
+                numpy.ndarrray which ndim == 2 as a matrix
+                shape requirement: row == col
+            inplace: bool 
+                whether do the decomposition inplace
+        returns:
+            (L, U):
+                tuple(numpy.ndarray, numpy.ndarray)
+                which ndim == 2 as a matrix
+                L,U will be X itself if inplace is True
+
+    """
     assert X.ndim == 2 , "input must be a matrix"
     row, col = X.shape
     assert row == col , "bad matrix shape"
@@ -22,6 +38,19 @@ def doolittle(X, inplace=True):
     return L, U
 
 def column_major_doolittle(X):
+    """
+        列主元杜利特分解 column major doolittle decompostion
+        ====================================================
+        params:
+            X:
+                numpy.ndarray which ndim == 2 as a matrix
+                shape requirement: row == col
+        returns:
+            (L, U):
+                tuple(numpy.ndarray, numpy.ndarray)
+                which ndim == 2 as a matrix
+         
+    """
     assert X.ndim == 2, "input must be a matrix"
     row, col = X.shape
     assert row == col, "bad matrix shape"
@@ -36,6 +65,22 @@ def column_major_doolittle(X):
     return L, U
 
 def crout(X, inplace=True):
+    """
+       克劳特分解 crout decomposition
+       ==================================
+       params:
+            X: 
+                numpy.ndarrray which ndim == 2 as a matrix
+                shape requirement: row == col
+            inplace: bool 
+                whether do the decomposition inplace
+        returns:
+            (L, U):
+                tuple(numpy.ndarray, numpy.ndarray)
+                which ndim == 2 as a matrix
+                L,U will be X itself if inplace is True
+
+    """
     assert X.ndim == 2 , "input must be a matrix"
     row, col = X.shape
     assert row == col, "bad matrix shape"
@@ -57,6 +102,19 @@ def crout(X, inplace=True):
 
 
 def inplace_back_iter(X, style='crout'):
+    """
+        原址反向迭代 inplace back iteration
+        ===================================
+        params:
+            X:
+                numpy.ndarrary which ndim == 2 as a Augmented matrix
+            style:
+                str back_iter style "crout" or "doolittle"
+        returns:
+            numpy.ndarray which ndim == 1 as a vector
+            result of the back iteration
+                
+    """
     assert X.ndim == 2, "input must be a matrix"
     row, col = X.shape
     col -= 1
@@ -80,6 +138,23 @@ def inplace_back_iter(X, style='crout'):
 
 
 def LU_solve(A, b, inplace=True):
+    """
+        LU 分解求解线性方程组 solve linear equations by LU decomposition
+        ================================================================
+        params:
+            A:
+                numpy.ndarray which ndim == 2 as a matrix
+                shape requirement: row == col
+            b:
+                numpy.ndarray which ndim == 1 as a vector
+                shape requirement len(b) == row
+            inplace:
+                bool whether do LU decomposition inplace
+        returns:
+            numpy.ndarray:
+                numpy.ndarray which ndim == 1 as a vector
+                result of input linear equations
+    """
     if inplace:
         doolittle(A)
         return inplace_back_iter(np.column_stack([A,b]), style='doolittle')
