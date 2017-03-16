@@ -6,7 +6,7 @@ a = np.array([[8.1, 2.3, -1.5], [0.5, -6.23, 0.87], [2.5, 1.5, 10.2]])
 print('input|>')
 print(a)
 
-L, U = LU.crout(a)
+L, U = LU.crout(a, inplace=False)
 print('L|>')
 print(L)
 print('U|>')

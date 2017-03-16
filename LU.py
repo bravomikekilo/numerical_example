@@ -29,10 +29,10 @@ def doolittle(X, inplace=True):
         U = np.zeros_like(X, dtype=np.float32)
 
     for i in range(row):
-        assert abs(U[i,i]) > 1e-5 , "fail at k = %d" % (i,)
         for j in range(i, col):
             U[i,j] = X[i,j] - np.sum(U[:i, j] * L[i, :i])
         major = U[i,i]
+        assert abs(U[i,i]) > 1e-5 , "fail at k = %d" % (i,)
         for j in range(i+1, col):
             L[j, i] = ( X[j, i] - np.sum(U[:i, i] * L[j, :i]) ) / major
     return L, U
@@ -92,10 +92,10 @@ def crout(X, inplace=True):
         L = np.zeros_like(X, dtype=np.float32)
 
     for k in range(row):
-        assert abs(L[k, k]) > 1e-5, "fail at k = %d" % (k,)
         for i in range(k, row):
             L[i, k] = X[i, k] - np.sum(L[i, :k] * U[:k, k])
         major = L[k, k]
+        assert abs(L[k, k]) > 1e-5, "fail at k = %d" % (k,)
         for j in range(k+1, col):
             U[k, j] = ( X[k, j] - np.sum(L[k, :k] * U[:k, j]) ) / major
     return L, U
