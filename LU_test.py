@@ -11,8 +11,8 @@ print('L|>')
 print(L)
 print('U|>')
 print(U)
-#print('LU|>')
-#print(L.dot(U))
+print('LU|>')
+print(L.dot(U))
 
 A = np.array([[1,2,3],[4,3,6],[7,8,9]], dtype=np.float32)
 b = np.array([8,7,5], dtype=np.float32).T
