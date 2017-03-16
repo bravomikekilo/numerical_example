@@ -1,3 +1,6 @@
+# author bravomikekilo bravomikekilo@buaa.edu.cn
+# under GPLv3
+# for LICENSE see LICENSE at root.
 import numpy as np
 
 def gauss_eli(X):

@@ -1,4 +1,7 @@
 #! /usr/bin/env python3
+# author bravomikekilo bravomikekilo@buaa.edu.cn
+# under GPLv3
+# for LICENSE see LICENSE at root.
 import math as _m
 import numpy as np
 
